@@ -1,8 +1,9 @@
 import numpy as np
+import sys
 from skimage import io, segmentation, color, img_as_ubyte
 from sklearn.cluster import KMeans
 
-def paintXnumbers(image_path, n_colors=20):
+def paint_by_numbers(image_path, n_colors=20):
     # Load image
     image = io.imread(image_path)
 
@@ -18,6 +19,16 @@ def paintXnumbers(image_path, n_colors=20):
 
     # Save the segmented image
     segmented_image_rescaled = img_as_ubyte(segmented_image)
-    io.imsave('paint_by_numbers_output.jpg', segmented_image_rescaled)
+    output_path = image_path.replace('.jpg', '_paint_by_numbers.jpg')
+    io.imsave(output_path, segmented_image_rescaled)
 
-    return 'paint_by_numbers_output.jpg'
+    return output_path
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python script_name.py path_to_image.jpg")
+        sys.exit(1)
+
+    image_path = sys.argv[1]
+    output_path = paint_by_numbers(image_path)
+    print(f"Processed image saved at: {output_path}")
