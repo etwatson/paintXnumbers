@@ -21,17 +21,16 @@ def paintXnumbers(image_path, n_colors=20):
     # Get the filename without the extension
     base_name = os.path.basename(image_path)
     file_name_without_ext = os.path.splitext(base_name)[0]
-    
+
+    # Convert the segmented_image to the proper data type for saving
+    segmented_image_rescaled = img_as_ubyte(segmented_image)
+
     # Define the output path in the current directory
     output_filename = f"{file_name_without_ext}_paintX.jpg"
     output_path = os.path.join(os.getcwd(), output_filename)
 
+    # Save the image
     io.imsave(output_path, segmented_image_rescaled)
-
-    
-    # Save the segmented image
-    # segmented_image_rescaled = img_as_ubyte(segmented_image)
-    # output_path = image_path.replace('.jpg', '_paintX.jpg')
 
     return output_path
 
