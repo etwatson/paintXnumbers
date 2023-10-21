@@ -21,7 +21,3 @@ def paintXnumbers(image_path, n_colors=20):
     io.imsave('paint_by_numbers_output.jpg', segmented_image_rescaled)
 
     return 'paint_by_numbers_output.jpg'
-
-# Call the function
-output_path = paintXnumbers('your_image_path.jpg')
-print(f"Processed image saved at: {output_path}")
