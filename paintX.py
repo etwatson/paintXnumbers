@@ -4,7 +4,7 @@ import sys
 from skimage import io, segmentation, color, img_as_ubyte
 from sklearn.cluster import KMeans
 
-def paintXnumbers(image_path, n_colors=20):
+def paintXnumbers(image_path, n_colors=256):
     # Load image
     image = io.imread(image_path)
 
